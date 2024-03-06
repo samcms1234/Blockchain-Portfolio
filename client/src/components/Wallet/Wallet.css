@@ -1,0 +1,102 @@
+.header a{
+   text-decoration: none;
+   color: white;
+
+}
+.header {
+    width: 100%;
+    height: 60px;
+    background-color: #212529;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 100px;
+    padding-left: 100px;
+    /* border: 4px solid red; */
+
+}
+
+.Menu {
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    
+}
+
+.menuItems {
+    font-size: 14px;
+    font-weight: 250;
+    width: 100px;
+    height: 38px;
+    text-align: center;
+    background-color: var(--color-bg);
+    border: 2px solid rgb(86, 88, 226);
+    color: #007bff;
+    border-radius: 20px;  
+    transition: 0.5s;
+    padding: 5px 0;
+    cursor: pointer;
+} 
+
+
+
+.menuItems a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0px;
+}
+
+/* .menuItems a:hover {
+    color: #ffffff;
+    transition: 1s;
+} */
+
+.menuItems a:hover{
+    color: white !important;
+}
+.menuItems:hover{
+    color: white;
+    background-color: var(--color-blue);
+    transition: 0.5s;
+}
+
+.connectBTN {
+    width: 160px;
+    height: 38px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #007bff;
+    font-weight: 400;
+    background-color: var(--color-bg);
+    border: 2px solid rgb(86, 88, 226);
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.connectBTN a:hover{
+    color: white !important;
+}
+.connectBTN:hover{
+    color: white;
+    background-color: var(--color-blue);
+    transition: 0.5s;
+}
+/* =========media querries========== */
+@media screen and (max-width: 420px) {
+
+    .header {
+        justify-content: center;
+        padding-right: 0px;
+        padding-left: 0px;
+        gap: 30px;
+    }
+    .connectBTN {
+        width: 130px;
+        height: 32px;
+        font-size: 12px;
+    }
+    .connectBTN:hover{
+        color: white;
+        background-color: var(--color-bg);
+    }
+}
