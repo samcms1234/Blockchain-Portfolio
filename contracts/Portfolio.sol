@@ -41,6 +41,22 @@ contract Portfolio {
     Project[] public projects;
     Education[] public educations;
 
+    string public imageLink="Add your cid";
+    string public profile="over 6 months of practical experience with a good knowledge in blockchain development.i help web3 community by contributing in the web3 space.";
+    string public resumeLink="QmP3fX1H8XSV7xnUuXmwAaLaizpbw8NR7uJ1bHva1uZnBh";
+
+    function changeLink(string memory _newLink) _onlyManager external {
+        imageLink = _newLink;
+    }
+
+    function changeProfile(string memory _newProfile) _onlyManager external {
+        profile = _newProfile;
+    }
+
+    function changeResume(string memory _cid) _onlyManager external {
+        resumeLink = _cid;
+    }
+
     address public manager;
 
     constructor() {
@@ -148,6 +164,11 @@ contract Portfolio {
     }
 
     function donate() public payable {
-        payable(manager).transfer(msg.value);
+        payable(address(this)).transfer(msg.value);
+    }
+
+    function collectFunds(uint amount) external _onlyManager {
+        require(address(this).balance >= amount, "Not enough balance in the contract");
+        payable(manager).transfer(amount);
     }
 }
