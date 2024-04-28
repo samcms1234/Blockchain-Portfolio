@@ -10,7 +10,7 @@ const Hero = ({state}) => {
     useEffect(()=>{
       const {contract}=state;
       const description=async()=>{
-        const descriptionText = await contract.methods.description().call();
+        const descriptionText = await contract.methods.profile().call();
         setDescription(descriptionText);
       }
       contract && description();
@@ -51,7 +51,7 @@ const Hero = ({state}) => {
             <div className="hero-img">
 
                 <div className="img-container">
-                    <img src={`https://gateway.pinata.cloud/ipfs/${cid}`} alt="profilePhoto" />
+                    <img src={`https://red-keen-chicken-777.mypinata.cloud/ipfs/${cid}`} alt="profilePhoto" />
                 </div>
             </div>
         </div>
