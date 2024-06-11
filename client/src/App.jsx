@@ -20,12 +20,12 @@ function App() {
   return (
     <>
       <Wallet saveState={saveState}></Wallet>
-      <Hero state={state}/>
+      <Hero />
       <Handles />
       <Projects state={state} />
       <Skills />
       <Experience state={state} />
-      <Contact state={state} />
+      <Contact/>
       <Handles />
     </>
   );

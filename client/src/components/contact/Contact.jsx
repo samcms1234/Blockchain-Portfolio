@@ -1,16 +1,22 @@
 import {useState,useEffect} from "react";
 import './Contact.css'
 
-const Contact = ({state}) => {
+import axios from 'axios';
+
+
+const Contact = () => {
     const [resume,setResume]=useState("");
+    const BASE_URL = 'http://localhost:5000';
     useEffect(()=>{
-        const {contract}=state;
-        const resumeDetails=async()=>{
-            const resumeCid = await contract.methods.resumeLink().call();
-            setResume("https://gateway.pinata.cloud/ipfs/"+resumeCid);
-        }
-        contract && resumeDetails();
-    },[state])
+        axios.get(BASE_URL+'/resume')
+        .then(response => {
+            setResume('https://gateway.pinata.cloud/ipfs/' + response.data.cid)
+            console.log(resume);
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    },[])
     
     return (
         <section className="contact-section">

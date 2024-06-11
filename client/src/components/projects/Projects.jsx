@@ -2,18 +2,22 @@ import React, { useEffect, useState} from 'react'
 import { FaDonate } from 'react-icons/fa';
 import { Modal, ModalHeader, ModalBody, Row, Button } from "reactstrap"
 import "./Projects.css"
+import axios from 'axios';
 
 const Projects = ({state}) => {
     const [modal, setModal] = useState(false);
     const [projects,setProjects]=useState("");
+    const BASE_URL = 'http://localhost:5000';
     useEffect(()=>{
-        const {contract}=state;
-        const projectDetails =async()=>{
-            const projects = await contract.methods.allProjects().call();
-            setProjects(projects)
-        }
-        contract && projectDetails();
-    },[state])
+        axios.get(BASE_URL+'/getallprojects')
+        .then(response => {
+            setProjects(response.data.projects)
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    },[])
+    
     const donateEth=async(event)=>{
         event.preventDefault();
         try{
@@ -33,12 +37,12 @@ const Projects = ({state}) => {
             <h1 className="title">Projects </h1>
             <div className="card-wrapper">
                  {projects!=="" && projects.map((project)=>{
-                    const githubLink=`https://github.com/kshitijofficial/${project.githubLink}`
+                    const githubLink=`https://github.com/samcms1234/${project.githubLink}`
                     return ( <a href= {githubLink} className="project-card" target='_blank' rel="noopener noreferrer" >
                     <div className="card-img">
-                        <img src={`https://gateway.pinata.cloud/ipfs/${project.image}`} alt="" /></div>
+                        <img src={`https://red-keen-chicken-777.mypinata.cloud/ipfs/${project.images[0]}`} alt="" /></div>
                     <div className="card-text">
-                        <h3>{project.name}</h3>
+                        <h3>{project.title}</h3>
                         <p>{project.description}</p>
                     </div>
                 </a>)

@@ -3,26 +3,31 @@ import { Modal, ModalBody, Row } from "reactstrap"
 import heroImg from '../../assets/hero-img.png'
 import './Hero.css'
 
-const Hero = ({state}) => {
+import axios from 'axios'
+
+const Hero = () => {
     const [modal, setModal] = useState(false);
     const [description,setDescription]=useState("");
     const [cid,setCid]=useState("");
+    const BASE_URL = 'http://localhost:5000';
     useEffect(()=>{
-      const {contract}=state;
-      const description=async()=>{
-        const descriptionText = await contract.methods.profile().call();
-        setDescription(descriptionText);
-      }
-      contract && description();
-    },[state])
+      axios.get(BASE_URL+'/fetchprofile')
+      .then(response => {
+        setDescription(response.data.profile);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    },[])
     useEffect(()=>{
-        const {contract}=state;
-        const cidOfImage=async()=>{
-          const cid = await contract.methods.imageLink().call();
-          setCid(cid);
-        }
-        contract && cidOfImage();
-      },[state])
+        axios.get(BASE_URL+'/imagecid')
+        .then(response => {
+            setCid(response.data.imagecid);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+      },[])
     return (
         <section className="hero">
         <div className="container">
