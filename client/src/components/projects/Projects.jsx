@@ -35,20 +35,29 @@ const Projects = ({state}) => {
     return (
         <section className="project-section">
             <h1 className="title">Projects </h1>
-            <div className="card-wrapper">
-                 {projects!=="" && projects.map((project)=>{
-                    const githubLink=`https://github.com/samcms1234/${project.githubLink}`
-                    return ( <a href= {githubLink} className="project-card" target='_blank' rel="noopener noreferrer" >
-                    <div className="card-img">
-                        <img src={`https://red-keen-chicken-777.mypinata.cloud/ipfs/${project.images[0]}`} alt="" /></div>
-                    <div className="card-text">
-                        <h3>{project.title}</h3>
-                        <p>{project.description}</p>
+            {projects.length > 0 ? (
+                projects.map((project) => {
+                const githubLink = `https://github.com/samcms1234/${project.githubLink}`;
+                return (
+                    <div className="card-wrapper">
+                    <a href={githubLink} className="project-card" target='_blank' rel="noopener noreferrer" key={project.githubLink}>
+                        <div className="card-text">
+                            <h3>{project.title}</h3>
+                        </div>
+                        <div className="card-img">
+                            <img src={`https://red-keen-chicken-777.mypinata.cloud/ipfs/${project.images[0]}`} alt="" />
+                        </div>
+                        <div className="card-text">
+                            <p>{project.description}</p>
+                        </div>
+                    </a>
                     </div>
-                </a>)
-                })} 
+                );
+                })
+                ) : (
+                    <p className='no-projects'>No projects to display</p>
+                )}
            
-            </div>
  {/*  =========popup bootstrap==========  */}
 
  <Modal size='md' isOpen={modal} toggle={() => setModal(!modal)}>
