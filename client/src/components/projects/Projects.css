@@ -115,6 +115,47 @@ background-color:var(--color-blue);
 }
 
 /* =========media querries========== */
+@media screen and (max-width: 1200px) {
+    .project-section {
+        padding-top: 60px;
+        height: 100%;
+        gap: 70px;
+        padding: 60px 80px 20px 80px;
+    }
+    .project-section .title {
+        font-size: 20px;
+    }
+    
+    .project-section .donate{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 970px) {
+    .project-section {
+        padding-top: 60px;
+        height: 100%;
+        gap: 70px;
+        padding: 50px 80px 20px 80px;
+    }
+    .project-section .title {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 836px) {
+    .project-section {
+        padding-top: 60px;
+        height: 100%;
+        gap: 70px;
+        padding: 40px 80px 20px 80px;
+    }
+    .project-section .donate{
+        font-size: 12px;
+        padding: 6px 20px 6px 20px;
+    }
+}
+
 @media screen and (max-width: 420px) {
     .project-section {
         padding-top: 60px;

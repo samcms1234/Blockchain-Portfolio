@@ -34,7 +34,7 @@ const Skills = () => {
 
     imageSrcs.forEach((src) => URL.revokeObjectURL(src));
     
-  });
+  }, []);
   
   return (
     <section className="skills-section">
